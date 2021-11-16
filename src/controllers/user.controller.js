@@ -64,9 +64,6 @@ const update = async (req, res) => {
     } 
 };
 
-const uploadProfile = () => {
-    
-}
 
 const deleter = async (req, res) => {
     try {
@@ -81,6 +78,22 @@ const deleter = async (req, res) => {
         return res.status(500).send(ERROR_RESPONSE(err.toString()));
     } 
 };
+
+
+
+//  router.put("/upload-image/:id", [uploadUserProfile.single('profile')],  async (req, res) => {
+//     try {
+//         if (!req.file) return res.status(400).send(API_RESPONSE(false, 'File not found', null, 404));
+
+//         const updated = await User.findByIdAndUpdate(req.params.id, { profile: req.file.path }, { new: true });
+//         if (!updated) return res.status(500).send(API_RESPONSE(false, 'User profile not updated', null, 500));
+//         return res.status(201).send(updated);
+
+//     } catch (err) {
+//         console.log(err);
+//         return res.status(500).send(err);
+//     }
+// });
 
 
 module.exports = {

@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 const timestamps = require('mongoose-timestamp');
-const { EUserStatus, EUserType, EEmployeeAccess, EEmployeeType } = require('../enums');
+const {  EEmployeeAccess, EEmployeeType } = require('../enums');
 const { getEnum } = require('../utils/common.util');
 const Joi = require('joi');
-const jwt = require('jsonwebtoken');
 
-const SECRET_KEY = process.env.SECRET_KEY;
 
 const employeeSchema = mongoose.Schema({
     user: {

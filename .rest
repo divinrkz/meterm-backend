@@ -94,3 +94,55 @@ PUT http://localhost:6000/api/employees/6194b207dac9f412a8d1c61c/access/GRANTED
 ###
 DELETE http://localhost:6000/api/employees/6194ac457018830a187fe422
 
+
+
+
+
+
+
+###
+
+
+// Products APIs
+GET http://localhost:6000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
+
+
+###
+GET http://localhost:6000/api/products/status/APPROVED_FOR_EXPORTATION
+
+###
+GET http://localhost:6000/api/products
+###
+POST http://localhost:6000/api/products
+Content-Type: application/json
+
+{
+    "name": "BIC Pens",
+    "quantity": "1",
+    "category": "Pens",
+    "owner": "BIC",
+    "exportationDate": "12/03/2014",
+    "expirationDate": "12/03/2015"
+}
+
+
+###
+PUT http://localhost:6000/api/products/6194ac457018830a187fe422
+Content-Type: application/json
+{
+    "name": "BIC Pens",
+    "quantity": "1",
+    "category": "Pens",
+    "owner": "BIC",
+    "exportationDate": "12/03/2014",
+    "expirationDate": "12/03/2015"
+}
+
+###
+PUT http://localhost:6000/api/products/6194b6a02056ba029456ddd7/status/APPROVED_FOR_EXPORTATION
+
+
+###
+DELETE http://localhost:6000/api/products/6194ac457018830a187fe422
+

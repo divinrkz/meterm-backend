@@ -24,4 +24,11 @@ const EEmployeeType = {
 };
 
 
-module.exports = {EUserType, EUserStatus, EEmployeeType, EEmployeeAccess};
+const EProductStatus = {
+    PENDING: 'PENDING',
+    APPROVED_FOR_EXPORTATION: 'APPROVED_FOR_EXPORTATION',
+    REJECTED_FOR_EXPORTATION: 'REJECTED_FOR_EXPORTATION'
+};
+
+
+module.exports = {EUserType, EUserStatus, EEmployeeType, EEmployeeAccess, EProductStatus};

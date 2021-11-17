@@ -46,3 +46,51 @@ Content-Type: application/json
 ###
 GET http://localhost:6000/api/auth/current-user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
+
+
+###
+
+
+// Employee APIs
+GET http://localhost:6000/api/employees
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
+
+
+###
+GET http://localhost:6000/api/employees/access/GRANTED
+
+###
+GET http://localhost:6000/api/employees
+###
+POST http://localhost:6000/api/employees
+Content-Type: application/json
+
+{
+    "names": "User Employee",
+    "username": "qa_staff",
+    "password": "Admin@123",
+    "nationalId": "1234167890123456",
+    "role": "QA_STAFF"
+}
+
+
+###
+PUT http://localhost:6000/api/employees/6194ac457018830a187fe422
+Content-Type: application/json
+
+{
+    "names": "User Employee",
+    "username": "qa_staff",
+    "password": "Admin@123",
+    "nationalId": "1234167890123456",
+    "role": "QA_STAFF"
+}
+
+
+###
+PUT http://localhost:6000/api/employees/6194b207dac9f412a8d1c61c/access/GRANTED
+
+
+###
+DELETE http://localhost:6000/api/employees/6194ac457018830a187fe422
+

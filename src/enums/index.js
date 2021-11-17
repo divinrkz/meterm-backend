@@ -10,5 +10,18 @@ const EUserStatus = {
     INACTIVE: 'INACTIVE'
 };
 
+const EEmployeeAccess = {
+    PENDING: 'PENDING',
+    GRANTED: 'GRANTED',
+    DENIED: 'DENIED'
+};
 
-module.exports = {EUserType, EUserStatus};
+
+const EEmployeeType = {
+    PENDING: 'PENDING',
+    QA_STAFF: 'QA_STAFF',
+    NORMAL: 'NORMAL'
+};
+
+
+module.exports = {EUserType, EUserStatus, EEmployeeType, EEmployeeAccess};

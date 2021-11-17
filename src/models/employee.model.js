@@ -30,8 +30,8 @@ const Employee = mongoose.model('Employee', employeeSchema);
 
 const validate = (data) => {
     const schema = {
-        names: Joi.string().required(),
-        username: Joi.string().required(),
+        names: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        username: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
         nationalId: Joi.string().min(16).max(16).required(),
         password: Joi.string().min(5).required(),
         role: Joi.string().valid(...getEnum(EEmployeeType)).required()
@@ -44,9 +44,9 @@ const validate = (data) => {
 
 const validateUpdate = (data) => {
     const schema = {
-        names: Joi.string().required(),
-        username: Joi.string().required(),
-        nationalId: Joi.string().min(16).max(16).required(),
+        names: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        username: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        nationalId: Joi.string().regex(/(?!^\d+$)^.+$/).min(16).max(16).required(),
         role: Joi.string().valid(...getEnum(EEmployeeType)).required()
     }
 

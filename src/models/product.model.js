@@ -44,9 +44,9 @@ const Product = mongoose.model('Product', productSchema);
 
 const validate = (data) => {
     const schema = {
-        name: Joi.string().required(),
-        category: Joi.string().required(),
-        owner: Joi.string().required(),
+        name: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        category: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        owner: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
         quantity: Joi.number().integer().min(1).required(),
         exportationDate: Joi.date().required(),
         expirationDate: Joi.date().required()
@@ -59,9 +59,9 @@ const validate = (data) => {
 
 const validateUpdate = (data) => {
     const schema = {
-        name: Joi.string().required(),
-        category: Joi.string().required(),
-        owner: Joi.string().required(),
+        name: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        category: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
+        owner: Joi.string().regex(/(?!^\d+$)^.+$/).required(),
         quantity: Joi.number().integer().min(1).required(),
         exportationDate: Joi.date().required(),
         expirationDate: Joi.date().required()

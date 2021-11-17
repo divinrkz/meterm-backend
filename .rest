@@ -1,9 +1,9 @@
 // User APIs
-GET http://localhost:6000/api/users
+GET http://localhost:4008/api/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
 
 ###
-POST http://localhost:6000/api/users
+POST http://localhost:4008/api/users
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:6000/api/users/6194ac457018830a187fe422
+PUT http://localhost:4008/api/users/6194ac457018830a187fe422
 Content-Type: application/json
 
 {
@@ -28,13 +28,13 @@ Content-Type: application/json
 
 
 ###
-DELETE http://localhost:6000/api/users/6194ac457018830a187fe422
+DELETE http://localhost:4008/api/users/6194ac457018830a187fe422
 
 
 
 // Auth APIS
 ###
-POST http://localhost:6000/api/auth/login
+POST http://localhost:4008/api/auth/login
 Content-Type: application/json
 
 {
@@ -44,7 +44,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:6000/api/auth/current-user
+GET http://localhost:4008/api/auth/current-user
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
 
 
@@ -52,17 +52,17 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4Z
 
 
 // Employee APIs
-GET http://localhost:6000/api/employees
+GET http://localhost:4008/api/employees
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
 
 
 ###
-GET http://localhost:6000/api/employees/access/GRANTED
+GET http://localhost:4008/api/employees/access/GRANTED
 
 ###
-GET http://localhost:6000/api/employees
+GET http://localhost:4008/api/employees
 ###
-POST http://localhost:6000/api/employees
+POST http://localhost:4008/api/employees
 Content-Type: application/json
 
 {
@@ -75,7 +75,7 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:6000/api/employees/6194ac457018830a187fe422
+PUT http://localhost:4008/api/employees/6194ac457018830a187fe422
 Content-Type: application/json
 
 {
@@ -88,11 +88,11 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:6000/api/employees/6194b207dac9f412a8d1c61c/access/GRANTED
+PUT http://localhost:4008/api/employees/6194b207dac9f412a8d1c61c/access/GRANTED
 
 
 ###
-DELETE http://localhost:6000/api/employees/6194ac457018830a187fe422
+DELETE http://localhost:4008/api/employees/6194ac457018830a187fe422
 
 
 
@@ -104,21 +104,21 @@ DELETE http://localhost:6000/api/employees/6194ac457018830a187fe422
 
 
 // Products APIs
-GET http://localhost:6000/api/products
+GET http://localhost:4008/api/products
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
 
 
 ###
-GET http://localhost:6000/api/products/status/APPROVED_FOR_EXPORTATION
+GET http://localhost:4008/api/products/status/APPROVED_FOR_EXPORTATION
 
 ###
-GET http://localhost:6000/api/products
+GET http://localhost:4008/api/products
 ###
-POST http://localhost:6000/api/products
+POST http://localhost:4008/api/products
 Content-Type: application/json
 
 {
-    "name": "BIC Pens",
+    "name": "sd21",
     "quantity": "1",
     "category": "Pens",
     "owner": "BIC",
@@ -128,7 +128,7 @@ Content-Type: application/json
 
 
 ###
-PUT http://localhost:6000/api/products/6194ac457018830a187fe422
+PUT http://localhost:4008/api/products/6194ac457018830a187fe422
 Content-Type: application/json
 {
     "name": "BIC Pens",
@@ -140,9 +140,9 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:6000/api/products/6194b6a02056ba029456ddd7/status/APPROVED_FOR_EXPORTATION
+PUT http://localhost:4008/api/products/6194b6a02056ba029456ddd7/status/APPROVED_FOR_EXPORTATION
 
 
 ###
-DELETE http://localhost:6000/api/products/6194ac457018830a187fe422
+DELETE http://localhost:4008/api/products/6194ac457018830a187fe422
 

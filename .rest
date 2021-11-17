@@ -1,0 +1,48 @@
+// User APIs
+GET http://localhost:6000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo
+
+###
+POST http://localhost:6000/api/users
+Content-Type: application/json
+
+{
+    "names": "Admin Divin",
+    "username": "admin",
+    "password": "Admin@123",
+    "nationalId": "1234567890123456",
+    "userType": "ADMIN"
+}
+
+
+###
+PUT http://localhost:6000/api/users/6194ac457018830a187fe422
+Content-Type: application/json
+
+{
+    "names": "Admin Divin User",
+    "username": "admin",
+    "nationalId": "1234567890123456",
+    "userType": "ADMIN"
+}
+
+
+###
+DELETE http://localhost:6000/api/users/6194ac457018830a187fe422
+
+
+
+// Auth APIS
+###
+POST http://localhost:6000/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "Admin@123"
+}
+
+
+###
+GET http://localhost:6000/api/auth/current-user
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0YWM4ZWRjNDc3YjI3ODAzZDg3MmIiLCJ1c2VybmFtZSI6ImFkbWluIiwidXNlclR5cGUiOiJBRE1JTiIsInN0YXR1cyI6IkFDVElWRSIsImlhdCI6MTYzNzEzMzY1M30.gGe7SC1HkqOi21I27t2hk0kPFMNohiM8zFA_w3JnMfo

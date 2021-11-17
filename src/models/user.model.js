@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 const timestamps = require('mongoose-timestamp');
-const { EGender, EUserStatus, EUserType } = require('../enums');
-const { getEnum } = require('../utils/methods.util');
+const { EUserStatus, EUserType } = require('../enums');
+const { getEnum } = require('../utils/common.util');
 const Joi = require('joi');
 const jwt = require('jsonwebtoken');
 
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const userSchema = mongoose.Schema({
-    fullNames: {
+    names: {
         type: String,
         required: true
     },
-    email: {
+    username: {
         type: String,
         required: true,
         unique: true
@@ -21,11 +21,6 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    },
-    gender: {
-        type: String,
-        enum: getEnum(EGender),
-        required: true
     },
     userType: {
         type: String,
@@ -39,15 +34,16 @@ const userSchema = mongoose.Schema({
     status: {
         type: String,
         enum: getEnum(EUserStatus),
-        default: EUserStatus.ACTIVE
+        default: EUserStatus.PENDING
     }
 });
 userSchema.plugin(timestamps);
 userSchema.methods.generateAuthToken = function () {
     return jwt.sign({
         _id: this._id,
-        email: this.email,
-        userType: this.userType
+        username: this.username,
+        userType: this.userType,
+        status: this.status
     }, SECRET_KEY);
 };
 
@@ -57,11 +53,22 @@ const User = mongoose.model('User', userSchema);
 
 const validate = (data) => {
     const schema = {
-        fullNames: Joi.string().min(3).required(),
-        email: Joi.string().email().required(),
+        names: Joi.string().required(),
+        username: Joi.string().required(),
         nationalId: Joi.string().min(16).max(16).required(),
-        gender: Joi.string().valid(...getEnum(EGender)).required(),
         password: Joi.string().min(5).required()
+    }
+
+    return Joi.validate(data, schema);
+
+}
+
+
+const validateUpdate = (data) => {
+    const schema = {
+        names: Joi.string().required(),
+        username: Joi.string().required(),
+        nationalId: Joi.string().min(16).max(16).required()
     }
 
     return Joi.validate(data, schema);
@@ -70,7 +77,7 @@ const validate = (data) => {
 
 const validateLogin = (data) => {
     const schema = {
-        email: Joi.string().required(),
+        username: Joi.string().required(),
         password: Joi.string().required()
     }
 
@@ -82,5 +89,6 @@ const validateLogin = (data) => {
 module.exports = {
     User,
     validate,
-    validateLogin
+    validateLogin,
+    validateUpdate
 }

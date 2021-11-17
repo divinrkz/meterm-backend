@@ -1,13 +1,13 @@
 const jwt = require('jsonwebtoken');
 const { User } = require('../models/user.model');
-const { ERROR_RESPONSE } = require('../utils/methods.util');
+const { ERROR_RESPONSE } = require('../utils/common.util');
 
 const SECRET_KEY = process.env.SECRET_KEY;
 const AUTH_MIDDLEWARE = async(req, res, next) => {
   
         const header = req.header('Authorization');
 
-        
+    
         if (!header) 
             return res.status(404).send(ERROR_RESPONSE(null, 'NO BEARER TOKEN FOUND')); 
         
@@ -19,10 +19,10 @@ const AUTH_MIDDLEWARE = async(req, res, next) => {
 
         try {
          const decoded = jwt.verify(token, SECRET_KEY);
-         5
+         
          const user = await User.findById(decoded._id);
 
-         req.AUTH_DATA = {_id: user._id, userType: user.userType, user};
+         req.AUTH_USER = {_id: user._id, userType: user.userType, user};
 
          next();
 

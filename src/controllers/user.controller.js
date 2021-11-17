@@ -34,6 +34,7 @@ const create = async (req, res) => {
         req.body.password = await hashPassword(req.body.password);
        
         req.body.status = EUserStatus.ACTIVE;
+        req.body.userType = EUserType.ADMIN;
 
         const user = new User(req.body);
 

@@ -10,8 +10,7 @@ Content-Type: application/json
     "names": "Admin Divin",
     "username": "admin",
     "password": "Admin@123",
-    "nationalId": "1234567890123456",
-    "userType": "ADMIN"
+    "nationalId": "1234567890123456"
 }
 
 
@@ -23,7 +22,7 @@ Content-Type: application/json
     "names": "Admin Divin User",
     "username": "admin",
     "nationalId": "1234567890123456",
-    "userType": "ADMIN"
+=
 }
 
 

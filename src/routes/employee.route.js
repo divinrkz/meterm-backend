@@ -4,7 +4,7 @@ const { AUTH_MIDDLEWARE } = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 
-router.get('/api/employees', [AUTH_MIDDLEWARE], getAll);
+router.get('/api/employees', getAll);
 router.get('/api/employees/:id', getById);
 router.get('/api/employees/access/:access', getAllByAccess);
 router.get('/api/employees/role/:role', getAllByRole);

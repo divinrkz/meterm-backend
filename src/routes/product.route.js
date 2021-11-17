@@ -4,7 +4,7 @@ const { AUTH_MIDDLEWARE } = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 
-router.get('/api/products', [AUTH_MIDDLEWARE], getAll);
+router.get('/api/products', getAll);
 router.get('/api/products/:id', getById);
 router.get('/api/products/status/:status', getAllByStatus);
 router.post('/api/products', create);

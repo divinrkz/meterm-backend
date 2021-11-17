@@ -4,7 +4,7 @@ const { AUTH_MIDDLEWARE } = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 
-router.get('/api/users', [AUTH_MIDDLEWARE], getAll);
+router.get('/api/users', getAll);
 router.get('/api/users/:id', getById);
 router.post('/api/users', create);
 router.put('/api/users/:id', update);

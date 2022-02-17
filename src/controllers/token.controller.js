@@ -35,8 +35,14 @@ const create = async (req, res) => {
         if (validateMeterNumber(req.body.meterNumber))
         return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
 
-        const random = generateToken();
+        let random = generateToken();
 
+                     
+        while (checkToken(random)) {
+            random = generateToken();
+            return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
+        };
+        
         const token = new Token(req.body);
 
         const saved = await token.save();
@@ -49,10 +55,12 @@ const create = async (req, res) => {
 };
 
 const checkToken = async (generated) => {
-    await Token.findOne({token: generated})
+    return await Token.findOne({token: generated});
 }
 
-
+const checkMeter = async(meterNumber) => {
+   return await Token.findOne({meterNumber});
+ }
 
 module.exports = {
     getAll, create, getAllByStatus

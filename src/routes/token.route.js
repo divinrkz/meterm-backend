@@ -4,5 +4,5 @@ const router = express.Router();
 
 
 router.get('/api/tokens', getAll);
-router.post('/api/tokens', create);
+router.post('/api/tokens/purchase', create);
 module.exports = router;

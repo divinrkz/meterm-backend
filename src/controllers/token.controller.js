@@ -58,18 +58,17 @@ const create = async (req, res) => {
     try {
         console.log(req.body);
         const {error} = validate(req.body);
-        if (error) return res.status(400).send(ERROR_RESPONSE(error.details[0].message, 'VALIDATION ERROR')); 
+        if (error) return res.status(400).send(ERROR_RESPONSE(error.details[0].message, 'Validation Error')); 
 
-        console.log(req.body.amount);
-        console.log(req.body.meterNumber);
+
+        if (!validateMeterNumber(req.body.meterNumber))
+        return res.status(400).send(ERROR_RESPONSE('Only 6 digits accepted', 'Invalid Meter')); 
 
 
         if (!validateAmount(req.body.amount))
-             return res.status(400).send(ERROR_RESPONSE('Invalid Amount', 'VALIDATION ERROR')); 
+             return res.status(400).send(ERROR_RESPONSE('Only multiples of 100 not greater than 182,500 is accepted', 'VALIDATION ERROR')); 
              
-        if (!validateMeterNumber(req.body.meterNumber))
-            return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
-
+  
         let random = generateToken();
 
         while (await checkToken(random)) {

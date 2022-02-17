@@ -21,8 +21,8 @@ const validateAmount = (amount) => {
 }
 
 const validateMeterNumber = (meterNumber) => {
-    const regex = /^[0-9]{1,6}$/;
-    return regex.test(meterNumber.toString())
+    const regex = /^[0-9]{6}$/;
+    return regex.test(meterNumber)
 }
 
 const generateToken = () => {
@@ -31,10 +31,17 @@ const generateToken = () => {
 }
 
 
+
+const getDays = (amount) => {
+    return (amount / 100);
+}
+
+
 module.exports = {
     getEnum,
     validateAmount,
     generateToken,
+    getDays,
     validateMeterNumber,
     SUCCESS_RESPONSE,
     ERROR_RESPONSE

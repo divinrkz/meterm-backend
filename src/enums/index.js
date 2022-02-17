@@ -1,6 +1,7 @@
 const ETokenStatus = {
     EXPIRED: 'EXPIRED',
-    ACTIVE: 'ACTIVE'
+    ACTIVE: 'ACTIVE',
+    USED: 'USED'
 };
 
 

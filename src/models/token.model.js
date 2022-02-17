@@ -8,14 +8,14 @@ const Joi = require('joi');
 const tokenSchema = mongoose.Schema({
     meterNumber: {
         type: Number,
-        min: 6,
-        max: 6,
+        minLength: 6,
+        maxLength: 6,
         required: true
     },
     token: {
         type: Number,
-        min: 8, 
-        max: 8,
+        minLength: 8, 
+        maxLength: 8,
         unique: true,
         required: true
     },

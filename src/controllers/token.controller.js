@@ -1,5 +1,5 @@
 const {Token, validate} = require('../models/token.model');
-const { ERROR_RESPONSE, SUCCESS_RESPONSE, validateMeterNumber, validateAmount, generateToken } = require('../utils/common.util');
+const { ERROR_RESPONSE, SUCCESS_RESPONSE, validateMeterNumber, validateAmount, getDays, generateToken } = require('../utils/common.util');
 const { ETokenStatus} = require('../enums');
 
 console.log(generateToken());
@@ -25,25 +25,37 @@ const getAllByStatus = async (req, res) => {
 
 const create = async (req, res) => {
     try {
+        console.log(req.body);
         const {error} = validate(req.body);
         if (error) return res.status(400).send(ERROR_RESPONSE(error.details[0].message, 'VALIDATION ERROR')); 
 
-        if (validateAmount(req.body.amount))
-             return res.status(400).send(ERROR_RESPONSE('Invalid Amount', 'VALIDATION ERROR')); 
+        console.log(req.body.amount);
+        console.log(req.body.meterNumber);
 
+
+        if (!validateAmount(req.body.amount))
+             return res.status(400).send(ERROR_RESPONSE('Invalid Amount', 'VALIDATION ERROR')); 
              
-        if (validateMeterNumber(req.body.meterNumber))
-        return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
+        if (!validateMeterNumber(req.body.meterNumber))
+            return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
 
         let random = generateToken();
 
-                     
-        while (checkToken(random)) {
+                     console.log(checkToken(random));
+        while (await checkToken(random)) {
             random = generateToken();
-            return res.status(400).send(ERROR_RESPONSE('Invalid Meter', 'VALIDATION ERROR')); 
         };
-        
-        const token = new Token(req.body);
+
+        const date = new Date();
+        console.log(random);
+        const token = new Token({
+            token: random,
+            meterNumber: parseInt(req.body.meterNumber),
+            status: ETokenStatus.USED,
+            amount: parseInt(req.body.amount),
+            purchaseDate: date,
+            expiryDate: date.setDate(date.getDate() + getDays(parseInt(req.body.amount)))
+        });
 
         const saved = await token.save();
 

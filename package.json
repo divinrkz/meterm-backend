@@ -1,7 +1,7 @@
 {
-  "name": "competition-final-backend",
+  "name": "meterm-backend",
   "version": "1.0.0",
-  "description": "National TVET Competition MIS Backend APIs Codebase",
+  "description": "Meterm Backend Repository",
   "main": "app.js",
   "scripts": {
     "test": "jest",

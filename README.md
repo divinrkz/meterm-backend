@@ -32,4 +32,12 @@ or
 yarn dev
 ```
 
+Run tests
+```
+npm run test
+```
+or
+yarn test
+```
+
 

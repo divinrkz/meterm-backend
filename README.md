@@ -10,9 +10,19 @@
 <br>
 
 Clone the repo
-```
+```bash
 git clone https://github.com/divinirakiza/meterm-backend
 ```
+
+Install Dependencies
+```
+npm i
+```
+or
+```
+yarn
+```
+
 Run the server
 ```
 npm run dev

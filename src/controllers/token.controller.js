@@ -1,8 +1,7 @@
 const {Token, validate} = require('../models/token.model');
-const { ERROR_RESPONSE, SUCCESS_RESPONSE, validateMeterNumber, validateAmount, getDays, generateToken } = require('../utils/common.util');
+const { ERROR_RESPONSE, SUCCESS_RESPONSE, validateMeterNumber, validateAmount, getDays, generateToken, validateToken } = require('../utils/common.util');
 const { ETokenStatus} = require('../enums');
 
-console.log(generateToken());
 const getAll = async (req, res) => {
     try {
         const tokens = await Token.find();
@@ -12,11 +11,43 @@ const getAll = async (req, res) => {
     } 
 };
 
-
 const getAllByStatus = async (req, res) => {
     try {
         const tokens = await Token.find({status: req.params.status});
         return res.status(200).send(SUCCESS_RESPONSE(tokens));
+    } catch (err) {
+        return res.status(500).send(ERROR_RESPONSE(err.toString()));
+    } 
+}
+
+const getByToken = async (req, res) => {
+    try {
+                  
+        if (!validateToken(req.params.token))
+            return res.status(400).send(ERROR_RESPONSE('Invalid Token Format', 'VALIDATION ERROR')); 
+
+        const token = await Token.findOne({token: req.params.token});
+        if (!token)
+            return res.status(404).send(ERROR_RESPONSE('Token not found'));
+
+        return res.status(200).send(SUCCESS_RESPONSE(token));
+    } catch (err) {
+        return res.status(500).send(ERROR_RESPONSE(err.toString()));
+    } 
+}
+
+const getByMeter = async (req, res) => {
+    try {
+                  
+        if (!validateMeterNumber(req.params.meter))
+            return res.status(400).send(ERROR_RESPONSE('Invalid Meter Number Format', 'VALIDATION ERROR')); 
+
+        const token = await Token.findOne({meterNumber: parseInt(req.params.meter)});
+
+        if (!token)
+            return res.status(404).send(ERROR_RESPONSE('Meter not found'));
+
+        return res.status(200).send(SUCCESS_RESPONSE(token));
     } catch (err) {
         return res.status(500).send(ERROR_RESPONSE(err.toString()));
     } 
@@ -41,13 +72,11 @@ const create = async (req, res) => {
 
         let random = generateToken();
 
-                     console.log(checkToken(random));
         while (await checkToken(random)) {
             random = generateToken();
         };
 
         const date = new Date();
-        console.log(random);
         const token = new Token({
             token: random,
             meterNumber: parseInt(req.body.meterNumber),
@@ -75,5 +104,5 @@ const checkMeter = async(meterNumber) => {
  }
 
 module.exports = {
-    getAll, create, getAllByStatus
+    getAll, create, getAllByStatus, getByToken, getByMeter
 }

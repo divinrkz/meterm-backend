@@ -25,6 +25,11 @@ const validateMeterNumber = (meterNumber) => {
     return regex.test(meterNumber)
 }
 
+const validateToken = (token) => {
+    const regex = /^[0-9]{8}$/;
+    return regex.test(token)
+}
+
 const generateToken = () => {
     const len = 8;
     return Math.floor(Math.pow(10, len-1) + Math.random() * (Math.pow(10, len) - Math.pow(10, len-1) - 1));
@@ -41,6 +46,7 @@ module.exports = {
     getEnum,
     validateAmount,
     generateToken,
+    validateToken,
     getDays,
     validateMeterNumber,
     SUCCESS_RESPONSE,

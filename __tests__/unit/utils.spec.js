@@ -1,4 +1,4 @@
-const { validateAmount, generateToken, getDays, validateMeterNumber } = require('../src/utils/common.util');
+const { validateAmount, generateToken, getDays, validateMeterNumber } = require('../../src/utils/common.util');
 
 
 describe("Testing inputs", () => {
